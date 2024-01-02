@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "rdbg",
+      "name": "launch local rails with socket connection",
+      "request": "launch",
+      "cwd":"${workspaceFolder}",
+      "script": "bin/rails server",
+    },
+    {
+      "type": "rdbg",
+      "debugPort": "12345",
+      "name": "launch local rails",
+      "request": "launch",
+      "cwd":"${workspaceFolder}",
+      "script": "bin/rails server",
+    },
+    {
+      "type": "rdbg",
+      "name": "attach with local rdbg with socket connection",
+      "request": "attach"
+      // Before using this, please run rdbg beforehand
+      // here is the sample commands
+      // rdbg -n --open -c -- bin/rails console
+      // rdbg -n --open -c -- bin/sidekiq
+    },
+    {
+      "type": "rdbg",
+      "name": "attach on docker port",
+      "request": "attach", // "<hostname>:<port>" to specify remote host with port
+      "debugPort": "12345",
+      "localfsMap": "/app:${workspaceFolder}", // "/file_system_on_docker:${workspaceFolder}"
+    }
+  ]
+}

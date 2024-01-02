@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web:
+    build: .
+    # explicitly declare port number etc
+    # command: bundle exec rdbg -n --open 12345 -c -- bin/rails s -p 3000 -b '0.0.0.0'
+    # you can set RUBY_DEBUG_XXX to enable debugging session implicitly
+    # https://github.com/ruby/debug
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      RUBY_DEBUG_NONSTOP: "true"
+      RUBY_DEBUG_OPEN: "true"
+      RUBY_DEBUG_PORT: 12345
+      RUBY_DEBUG_HOST: 0.0.0.0
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+      - 12345:12345
